@@ -1,0 +1,17 @@
+{
+  "name": "bring-da-pain",
+  "version": "0.0.0",
+  "description": "BringDaPain",
+  "main": "app/index.js",
+  "author": {
+    "name": "Kaelan Mikowicz"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "passport": "^0.3.2",
+    "pug": "^2.0.0-beta6",
+    "request": "^2.74.0",
+    "socket.io": "^1.4.8"
+  }
+}
