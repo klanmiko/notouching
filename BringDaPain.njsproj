@@ -30,6 +30,17 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="app\pointer\icon\icon.js" />
+    <Compile Include="app\score\index.js" />
+    <Compile Include="app\score\score.js" />
+    <Compile Include="app\tutorial\index.js" />
+    <Compile Include="game\scene\mapper.js" />
+    <Compile Include="game\scene\scene.js" />
+    <Compile Include="game\scene\tests\sceneTest.js">
+      <SubType>Code</SubType>
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
+    <Compile Include="game\server.js" />
     <Compile Include="app\pointer\index.js" />
     <Compile Include="app\pointer\pointer.js" />
     <Compile Include="app\index.js" />
@@ -39,9 +50,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
+    <Folder Include="app\pointer\icon\" />
+    <Folder Include="app\pointer\icon\res\icons\" />
+    <Folder Include="app\pointer\icon\res\" />
+    <Folder Include="app\pointer\icon\res\masks\" />
+    <Folder Include="app\score\" />
+    <Folder Include="app\tutorial\" />
+    <Folder Include="game\" />
+    <Folder Include="game\scene\" />
+    <Folder Include="game\scene\tests\" />
     <Folder Include="app\pointer\" />
     <Folder Include="app\views\" />
     <Folder Include="app\views\static\" />
+    <Folder Include="db\" />
     <Folder Include="typings\" />
     <Folder Include="typings\globals\" />
     <Folder Include="typings\globals\body-parser\" />
