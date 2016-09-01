@@ -1,12 +1,11 @@
-﻿var controller = require('./pointer.js');
-function post(res, req) {
-}
-function put(res, req){
+﻿var Pointer = require('./pointer.js');
+var router = require('express').Router();
+router.get('/', function post(req, res) {
+});
+router.put('/',function(req, res){
 
-}
-function get(res, req){
+});
+router.post('/',function(req, res){
 
-}
-module.exports.route.post = post;
-module.exports.route.get = get;
-module.exports.route.put = put;
+});
+module.exports.route = router;

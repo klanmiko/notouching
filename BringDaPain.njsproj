@@ -31,10 +31,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app\pointer\icon\icon.js" />
+    <Compile Include="app\pointer\icon\index.js" />
     <Compile Include="app\score\index.js" />
     <Compile Include="app\score\score.js" />
     <Compile Include="app\tutorial\index.js" />
-    <Compile Include="game\scene\mapper.js" />
+    <Compile Include="db\interface.js" />
+    <Compile Include="game\scene\boundingviewhierarchy.js" />
+    <Compile Include="game\scene\spacemapper.js" />
     <Compile Include="game\scene\scene.js" />
     <Compile Include="game\scene\tests\sceneTest.js">
       <SubType>Code</SubType>
@@ -56,6 +59,7 @@
     <Folder Include="app\pointer\icon\res\masks\" />
     <Folder Include="app\score\" />
     <Folder Include="app\tutorial\" />
+    <Folder Include="app\tutorial\views\" />
     <Folder Include="game\" />
     <Folder Include="game\scene\" />
     <Folder Include="game\scene\tests\" />

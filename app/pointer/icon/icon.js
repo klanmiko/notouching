@@ -1,9 +1,10 @@
 ﻿var fs = require('fs');
+var idgen = require('shortid');
 var Parser = require('xml2js').Parser;
 var parser = new Parser();
 function getMask(mask){
     switch (mask) {
-        case "white":
+        default:
             return "./res/masks/white.mask";
         case "black":
             return "./res/masks/black.mask";
@@ -11,11 +12,11 @@ function getMask(mask){
 }
 function getIcon(icon){
     switch (icon) {
-        case "default":
+        default:
             return "./res/icons/default.svg";
     }
 }
-function listResources(callback){
+module.exports.list = function listResources(callback){
     var output;
     output.masks = [];
     output.icons = [];
@@ -33,9 +34,23 @@ function listResources(callback){
         done = true;
     });
 }
-function icon(mask, icon){
-    mask = mask | "white";
-    icon = icon | "default";
-    this.mask = getMask(mask);
-    this.base = getIcon(icon);
+module.exports.Icon = function icon(id, width, height, mask, icon){
+    this.id = id | idgen.generate();
+    this.mask = mask | "white";
+    this.icon = icon | "default";
+    this.width = width | 50;
+    this.heigh = height | 50;
+}
+module.exports.getSVG = function getSVG(icon,callback){
+    var mask;
+    fs.readFile(getMask(icon.mask), function (err, data) {
+        parser.parseString(data, function (err, result) {
+            mask = result;
+            fs.readFile(getIcon(icon.icon), function (err, data) {
+                parser.parseString(data, function (err, result) { 
+                    console.dir(result);
+                });
+            });
+        });
+    });
 }
