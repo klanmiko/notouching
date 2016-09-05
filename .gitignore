@@ -5,7 +5,7 @@ node_modules
 obj
 # Folder config file
 Desktop.ini
-
+.vs
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
