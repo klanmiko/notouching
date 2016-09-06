@@ -6,9 +6,10 @@ obj
 # Folder config file
 Desktop.ini
 .vs
+.vs\
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
-
+*.tmp
 # Windows Installer files
 *.cab
 *.msi
