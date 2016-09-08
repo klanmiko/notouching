@@ -36,7 +36,9 @@
     <Compile Include="app\score\score.js" />
     <Compile Include="app\tutorial\index.js" />
     <Compile Include="db\interface.js" />
+    <Compile Include="game\room.js" />
     <Compile Include="game\scene\boundingviewhierarchy.js" />
+    <Compile Include="game\scene\button.js" />
     <Compile Include="game\scene\spacemapper.js" />
     <Compile Include="game\scene\scene.js" />
     <Compile Include="game\scene\tests\sceneTest.js">
