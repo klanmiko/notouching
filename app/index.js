@@ -6,7 +6,7 @@ var cookies = require('cookie-parser');
 var bodyparser = require('body-parser');
 var app = express();
 var game = require('../game/server.js');
-var port = process.env.port || 80;
+var port = process.env.PORT || 80;
 
 app.set('views', './app/views');
 app.set('view engine', 'pug');
