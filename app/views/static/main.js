@@ -60,10 +60,6 @@ socket.on('button-shrink', function (button) {
     scene.button = button;
     draw();
 });
-socket.on('player-disconnect', function (id) {
-    removePlayer(id);
-    draw();
-});
 function removePlayer(id) {
     for (var i = 0; i < scene.players.length; i++) {
         if (scene.players[i].id == id) {

@@ -25,8 +25,8 @@ module.exports.use = function (io) {
             });
         });
         socket.on('disconnect', function () {
-            io.emit('player-disconnect', player.id);
             mainScene.removePlayer(player.id);
+            io.emit('load', { width: mainScene.width, height: mainScene.height, button: mainScene.button, players: mainScene.players });
         });
     });
 };
