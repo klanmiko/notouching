@@ -1,4 +1,4 @@
-﻿var socket = io.connect("http://localhost");
+﻿var socket = io.connect("http://localhost:1337");
 var scene;
 var myID = Cookies.get('id');
 var icon = new Image();
