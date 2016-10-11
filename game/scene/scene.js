@@ -14,17 +14,19 @@ module.exports.Player = function (id, x, y, name) {
     this.y = y || 0;
     players++;
 };
-module.exports.Edge = function edge(axis, origin) {
+function edge(axis, origin) {
     this.axis = axis;
     this.origin = origin;
 };
-module.exports.Grid = function grid(horizontal, vertical) {
+module.exports.Edge = edge;
+function grid(horizontal, vertical) {
     this.horizontals = horizontal;
     this.verticals = vertical;
-    edgeQuickSort(horizontals);
-    edgeQuickSort(verticals);
+    edgeQuickSort(this.horizontals,0,this.horizontals.length-1);
+    edgeQuickSort(this.verticals,0,this.horizontals.length-1);
 };
-function edgeQuickSort(edges,low,high) {
+module.exports.Grid = grid;
+function edgeQuickSort(edges, low, high) {
     if (low < high) {
         var p = edgePartition(edges, low, high);
         edgeQuickSort(edges, low, p);
@@ -35,27 +37,35 @@ function edgePartition(edges,low,high) {
     var pivot = edges[low].axis;
     var i = low - 1;
     var j = high + 1;
-    do {
-        i++;
-    } while (edges[i].axis < pivot);
-    do {
-        j--;
-    } while (edges[j].axis > pivot);
-    if (i >= j)
-        return j;
-    var temp = edges[j];
-    edges[j] = edges[i];
-    edges[i] = temp;
+    while (true) {
+        do {
+            i++;
+        } while (edges[i].axis < pivot);
+        do {
+            j--;
+        } while (edges[j].axis > pivot);
+        if (i >= j)
+            return j;
+        var temp = edges[j];
+        edges[j] = edges[i];
+        edges[i] = temp;
+    }
 }
-module.exports.gridify = function gridify(points) {
+function gridify(scene) {
+    var points = scene.players;
     var horizontals = [];
     var verticals = [];
     for (var a = 0; a < points.length; a++) {
         horizontals.push(new edge(points[a].y, points[a].x));
         verticals.push(new edge(points[a].x, points[a].y));
     }
+    horizontals.push(new edge(0, 0));
+    verticals.push(new edge(0, 0));
+    horizontals.push(new edge(scene.height, 0));
+    verticals.push(new edge(scene.width, 0));
     return new grid(horizontals, verticals);
 };
+module.exports.gridify = gridify;
 module.exports.Scene = function (width, height, button) {
     this.width = width;
     this.height = height;
@@ -104,8 +114,33 @@ module.exports.Scene = function (width, height, button) {
         }
     };
 };
-function findEmptyCell(scene){
-    return false;
+function findEmptyCell(scene) {
+    var grid = gridify(scene);
+    for (var i = 0; i < grid.verticals.length; i++) {
+        for (var j = i; j < grid.verticals.length; j++) {
+            if (grid.verticals[j].axis - grid.verticals[i].axis < scene.button.width) continue;
+            for (var x = 0; x < grid.horizontals.length; x++) {
+                for (var y = x; y < grid.horizontals.length; y++) {
+                    if (grid.horizontals[y].axis - grid.horizontals[x].axis < scene.button.height) continue;
+                    var box = new Object();
+                    var clear = true;
+                    box.x = grid.verticals[i].axis;
+                    box.y = grid.horizontals[x].axis;
+                    box.width = grid.verticals[j].axis - grid.verticals[i].axis;
+                    box.height = grid.horizontals[y].axis - grid.horizontals[x].axis;
+                    for (var a = x; a < y - x; a++) {
+                        var point = new Object();
+                        point.x = grid.horizontals[a].origin;
+                        point.y = grid.horizontals[a].axis;
+                        if (pointInBox(point, box)){
+                            clear = false;
+                        }
+                    }
+                    if (clear) return box;
+                }
+            }
+        }
+    }
 }
 module.exports.findEmptyCell = findEmptyCell;
 function isPlayer(player){
