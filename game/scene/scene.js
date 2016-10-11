@@ -1,5 +1,6 @@
 ﻿var idgen = require('shortid');
-var SHRINK_RATE = 0.8;
+var SHRINK_RATE = 0.9;
+var CLICK_SCORE = 25;
 module.exports.Button = function (x, y, width, height) {
     this.x = x;
     this.y = y;
@@ -7,9 +8,10 @@ module.exports.Button = function (x, y, width, height) {
     this.height = height || 100;
 };
 var players = 1;
-module.exports.Player = function (id, x, y, name) {
+module.exports.Player = function (id, x, y, name, score) {
     this.id = id || idgen.generate();
     this.name = name || "player" + players;
+    this.score = score || 0;
     this.x = x || 0;
     this.y = y || 0;
     players++;
@@ -92,8 +94,10 @@ module.exports.Scene = function (width, height, button) {
     this.onClick = function(player,callback) {
         if (isPlayer(player)) {
             if (pointInBox(player, this.button)) {
+                console.log("testing value");
                 var emptyCell = findEmptyCell(this);
                 if (emptyCell) {
+                    console.log("moving to an empty cell at " + JSON.stringify(emptyCell));
                     this.button.x = emptyCell.x;
                     this.button.y = emptyCell.y;
                     callback('button-move', button);
@@ -102,6 +106,8 @@ module.exports.Scene = function (width, height, button) {
                     this.button.width *= SHRINK_RATE;
                     this.button.height *= SHRINK_RATE;
                     callback('button-shrink', this.button);
+                    player.score += CLICK_SCORE;
+                    callback('score', player);
                 }
             }
         }

@@ -2,7 +2,7 @@
 var Player = require('./scene/scene.js').Player;
 var Button = require('./scene/scene.js').Button;
 var Cookie = require('cookie');
-var mainScene = new Scene(1000,1000,new Button(500,500,300,300));
+var mainScene = new Scene(800,600,new Button(200,200,500,500));
 module.exports.use = function (io) {
     io.on('connection', function (socket) {
         var cookie = Cookie.parse(socket.request.headers.cookie);

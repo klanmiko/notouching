@@ -29,7 +29,7 @@ app.get('/', function (req, res) {
         id = idgen.generate();
         res.cookie('id', id);
     }
-    res.render('index', { width: 1000, height: 1000});
+    res.render('index', { width: 800, height: 600});
 });
 
 var frontEnd = http.Server(app);
