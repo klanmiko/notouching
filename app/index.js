@@ -18,7 +18,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(express.static('./app/views/static'));
-app.use(bodyparser.urlencoded({ extennded: true }));
+app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 app.use(cookies(secret));
 
