@@ -1,0 +1,17 @@
+﻿body {
+}
+#overlay{
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    width:100%;
+    height:auto;
+}
+#rankings{
+    position:absolute;
+    right:5px;
+    top:0;
+    width:auto;
+    height:auto;
+}

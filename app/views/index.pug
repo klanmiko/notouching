@@ -1,6 +1,14 @@
 ﻿doctype html
 html
-  head
-    title BringDaPain
-    meta(name='viewport' content='width=device-width, initial-scale=1')
-  body
+	head
+		title No Touching
+		meta(name='viewport' content='width=device-width, initial-scale=1')
+		script(src="https://cdn.socket.io/socket.io-1.4.5.js")
+		script(src='/cookies.min.js')
+		link(rel='stylesheet' href='/main.css')
+	body
+		div(id='overlay')
+			p(id='myscore')
+			div(id='rankings')
+		canvas(id='canvas' width=width height=height)
+	script(src='/main.js')

@@ -30,61 +30,68 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="app\pointer\icon\icon.js" />
-    <Compile Include="app\pointer\icon\index.js" />
-    <Compile Include="app\score\index.js" />
-    <Compile Include="app\score\score.js" />
-    <Compile Include="app\tutorial\index.js" />
-    <Compile Include="db\interface.js" />
-    <Compile Include="game\room.js" />
-    <Compile Include="game\scene\boundingviewhierarchy.js" />
-    <Compile Include="game\scene\button.js" />
-    <Compile Include="game\scene\spacemapper.js" />
+    <Compile Include="app\views\static\cookies.min.js" />
+    <Compile Include="app\views\static\main.js" />
+    <Compile Include="game\scene\scene.es5.js">
+      <SubType>Code</SubType>
+      <DependentUpon>game\scene\scene.js</DependentUpon>
+    </Compile>
+    <Compile Include="game\scene\scene.es5.min.js">
+      <SubType>Code</SubType>
+      <DependentUpon>game\scene\scene.es5.js</DependentUpon>
+    </Compile>
     <Compile Include="game\scene\scene.js" />
-    <Compile Include="game\scene\tests\sceneTest.js">
+    <Compile Include="game\scene\sceneTest.js">
       <SubType>Code</SubType>
       <TestFramework>Mocha</TestFramework>
     </Compile>
     <Compile Include="game\server.js" />
-    <Compile Include="app\pointer\index.js" />
-    <Compile Include="app\pointer\pointer.js" />
     <Compile Include="app\index.js" />
     <Content Include="app\views\index.pug" />
+    <Content Include="app\views\static\cursor.svg" />
+    <None Include="compilerconfig.json" />
+    <Content Include="app\views\static\main.css" />
+    <Content Include="compilerconfig.json.defaults">
+      <SubType>Content</SubType>
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </Content>
     <Content Include="package.json" />
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
-    <Folder Include="app\pointer\icon\" />
-    <Folder Include="app\pointer\icon\res\icons\" />
-    <Folder Include="app\pointer\icon\res\" />
-    <Folder Include="app\pointer\icon\res\masks\" />
-    <Folder Include="app\score\" />
-    <Folder Include="app\tutorial\" />
-    <Folder Include="app\tutorial\views\" />
     <Folder Include="game\" />
     <Folder Include="game\scene\" />
-    <Folder Include="game\scene\tests\" />
-    <Folder Include="app\pointer\" />
     <Folder Include="app\views\" />
     <Folder Include="app\views\static\" />
-    <Folder Include="db\" />
     <Folder Include="typings\" />
     <Folder Include="typings\globals\" />
     <Folder Include="typings\globals\body-parser\" />
+    <Folder Include="typings\globals\cookie-parser\" />
+    <Folder Include="typings\globals\cradle\" />
     <Folder Include="typings\globals\express\" />
+    <Folder Include="typings\globals\mocha\" />
     <Folder Include="typings\globals\node\" />
     <Folder Include="typings\globals\passport\" />
+    <Folder Include="typings\globals\pug\" />
     <Folder Include="typings\globals\request\" />
+    <Folder Include="typings\globals\shortid\" />
     <Folder Include="typings\globals\socket.io\" />
+    <Folder Include="typings\globals\xml2js\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="typings\globals\body-parser\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\cookie-parser\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\cradle\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\express\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\mocha\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\passport\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\pug\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\request\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\shortid\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\socket.io\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\xml2js\index.d.ts" />
     <TypeScriptCompile Include="typings\index.d.ts" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
